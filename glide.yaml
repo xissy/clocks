@@ -1,0 +1,4 @@
+package: git.taeho.io/taeho/clocks
+import:
+- package: github.com/getwe/figlet4go
+- package: github.com/gosuri/uilive
