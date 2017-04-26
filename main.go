@@ -11,15 +11,16 @@ import (
 )
 
 func updateClocks(writer *uilive.Writer, clocks []*Clock) {
-	writer.Start()
-	defer writer.Stop()
-
 	// Why two for loops?
 	// uilive reflects the screen pretty fast. Once you combine `Update()` with
 	// writing the results, it will display a broken result sometimes.
 	for _, clock := range clocks {
 		clock.Update()
 	}
+
+	writer.Start()
+	defer writer.Stop()
+
 	for _, clock := range clocks {
 		fmt.Fprintln(writer, clock.DateString)
 		fmt.Fprintln(writer, clock.TimeFiglet)
